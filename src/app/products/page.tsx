@@ -11,6 +11,7 @@ const fetchProducts = async () => {
 async function ProductsPage() {
   const products = await fetchProducts();
   return <ProductsList products={products} />;
+  // return 'Products Page';
 }
 
 export default ProductsPage;
