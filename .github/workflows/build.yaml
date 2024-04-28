@@ -1,0 +1,19 @@
+name: build and run tests
+on:
+  pull_request:
+    branches: main
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: install dependencies
+        run: npm ci
+
+      - name: run tests
+        run: npm run test
