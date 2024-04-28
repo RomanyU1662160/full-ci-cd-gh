@@ -9,8 +9,8 @@
 # testing
 /coverage
 
-# next.js
-/.next/
+# removed the next.js, so the Elastic Beanstalk can deploy the app correctly
+
 /out/
 
 # production
