@@ -1,7 +1,8 @@
+# This a reusable workflow that will run tests, build app and upload artefact
+# We need to create a .env file on the fly to add the env variables required by the next.js app
 name: build and run tests
 on:
-  pull_request:
-    branches: main
+  workflow_call:
 jobs:
   checkout:
     runs-on: ubuntu-latest
@@ -42,7 +43,7 @@ jobs:
 
       - name: create env file
         run: |
-          echo "FLAGSMITH_ENVIRONMENT_ID=ser.QruZ6dDGeGj9LXp8tyTv8S" >> .env
+          echo "FLAGSMITH_ENVIRONMENT_ID=${{secrets.FLAGSMITH_ENVIRONMENT_ID}}" >> .env
 
       - name: setup node version
         uses: actions/setup-node@v4

@@ -1,0 +1,9 @@
+name: CI-CD
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  build-and-test:
+    uses: ./.github/workflows/build.yaml
+    secrets: inherit
