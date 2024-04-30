@@ -45,7 +45,7 @@ jobs:
 
       - name: create env file
         run: |
-          echo "FLAGSMITH_ENVIRONMENT_ID=ser.QruZ6dDGeGj9LXp8tyTv8S" >> .env
+          echo "FLAGSMITH_ENVIRONMENT_ID=${{secrets.FLAGSMITH_ENVIRONMENT_ID}}" >> .env
 
       - name: setup node version
         uses: actions/setup-node@v4
