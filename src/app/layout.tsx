@@ -19,7 +19,7 @@ export default async function RootLayout({
 }>) {
   const flagsmith = createFlagsmithInstance();
   await flagsmith.init({
-    environmentID: process.env.NEXT_PUBLIC_FLAGSMITH_ENVIRONMENT_ID as string,
+    environmentID: process.env.FLAGSMITH_ENVIRONMENT_ID as string,
   });
   const serverState = flagsmith.getState();
   const allFlags = flagsmith.getAllFlags();
