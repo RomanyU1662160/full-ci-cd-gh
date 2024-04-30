@@ -1,7 +1,8 @@
+# This a reusable workflow that will run tests, build app and upload artefact
+# We need to create a .env file on the fly to add the env variables required by the next.js app
 name: build and run tests
 on:
-  pull_request:
-    branches: main
+  workflow_call:
 jobs:
   checkout:
     runs-on: ubuntu-latest
