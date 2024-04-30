@@ -1,9 +1,18 @@
-name: CI-CD
+name: CI
 on:
   pull_request:
-    branches:
-      - main
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
-  build-and-test:
+  unit-tests-and-build:
     uses: ./.github/workflows/build.yaml
     secrets: inherit
+  echo-success:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo workflow
+        run: echo ${{ github.workflow }}
