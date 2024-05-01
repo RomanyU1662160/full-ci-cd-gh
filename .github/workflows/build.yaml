@@ -37,7 +37,6 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    environment: Dev
     needs: unit-test
     env:
       FLAGSMITH_ENVIRONMENT_ID: ${{secrets.FLAGSMITH_ID}}
