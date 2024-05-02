@@ -19,10 +19,6 @@ function ProductItem({ product }: ProductProps) {
         alt={product?.title}
         width={200}
         height={200}
-        onError={(e) => {
-          e.currentTarget.src =
-            'https://placehold.co/600x400?text=Comming-Soon';
-        }}
       />
       <div className='card-body'>
         <h3 className='card-title text-info'>{product?.title}</h3>
