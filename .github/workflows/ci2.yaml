@@ -1,0 +1,20 @@
+# in this worlflow we use the resuable composite action, this is a second a  approach to create reusable steps
+name: CI-2
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  run-unit-tests-from-composite-wf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: run-unit-tests
+        uses: ./.github/reusable
+
+      - name: list files
+        run: ls -a
