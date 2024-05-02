@@ -1,0 +1,30 @@
+name: test-reusable-with-composite
+description: "Composite is an WF that we combine steps in on wf and  reuse it"
+runs:
+ using: composite
+ steps:
+   - uses: actions/checkout@v4
+   - uses: actions/setup-node@v4
+     with:
+      node-version: 20
+      cache: 'npm'
+
+   - name: install dependencies
+     run : npm ci
+     shell: bash
+
+   - name: check typescript errors
+     shell: bash
+     run: npm run typeCheck
+  
+   - name: check linting errors
+     shell: bash
+     run: npm run lint
+
+   - name: run unit test
+     shell: bash
+     run : npm run test
+    
+   - uses: codecov/codecov-action@v4.0.1
+     with: 
+       token: secrets.CODECOV_TOKEN
