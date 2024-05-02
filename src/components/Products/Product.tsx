@@ -4,6 +4,7 @@ import { Product } from '@/types/Product';
 import Image from 'next/image';
 import React from 'react';
 import { useFlags } from 'flagsmith/react';
+import Link from 'next/link';
 type ProductProps = {
   product: Product;
 };
@@ -19,7 +20,8 @@ function ProductItem({ product }: ProductProps) {
         width={200}
         height={200}
         onError={(e) => {
-          e.currentTarget.src = '/images/placeholder.png';
+          e.currentTarget.src =
+            'https://placehold.co/600x400?text=Comming-Soon';
         }}
       />
       <div className='card-body'>
@@ -32,7 +34,9 @@ function ProductItem({ product }: ProductProps) {
           <span className='text-warning fw-bolder'> ${product?.price} </span>
         </p>
         {view_product_details?.enabled && (
-          <button className='btn btn-lg btn-primary'>More info</button>
+          <Link href={`/products/${product?.id}`}>
+            <button className='btn btn-lg btn-primary'>More info</button>
+          </Link>
         )}
       </div>
     </div>
