@@ -19,9 +19,6 @@ function ProductItem({ product }: ProductProps) {
         alt={product?.title}
         width={200}
         height={200}
-        onError={(e) => {
-          e.currentTarget.src = '/images/placeholder.png';
-        }}
       />
       <div className='card-body'>
         <h3 className='card-title text-info'>{product?.title}</h3>

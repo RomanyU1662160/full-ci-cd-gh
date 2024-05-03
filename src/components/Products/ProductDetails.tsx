@@ -20,9 +20,6 @@ function ProductDetails({ product }: ProductDetailsProps) {
           className='img-fluid '
           width={500}
           height={200}
-          onError={(e) => {
-            e.currentTarget.src = '/images/placeholder.png';
-          }}
         />
         <h3 className='text-warning text-center'> £{product.price}</h3>
       </div>
