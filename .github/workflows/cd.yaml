@@ -1,0 +1,25 @@
+name: CD-and-release
+on:
+  push:
+    branches:
+      - main
+concurrency:
+  group: ${{github.workflow}}-${{github.ref}}
+  cancel-in-progress: true
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: setup node version 20X
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: install dependencies
+        run: npm ci
+      - name: create release
+        uses: changesets/action@v1
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
