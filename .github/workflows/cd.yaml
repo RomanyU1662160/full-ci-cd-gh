@@ -22,5 +22,7 @@ jobs:
       - name: create release or PR Version
         id: release
         uses: changesets/action@v1
+        with:
+          publish: npx changeset tag
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
