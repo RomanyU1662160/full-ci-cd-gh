@@ -6,6 +6,9 @@ on:
 concurrency:
   group: ${{github.workflow}}-${{github.ref}}
   cancel-in-progress: true
+permissions:
+  contents: write
+
 jobs:
   create-version-pr-or-create-release:
     runs-on: ubuntu-latest
