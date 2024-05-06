@@ -7,7 +7,7 @@ concurrency:
   group: ${{github.workflow}}-${{github.ref}}
   cancel-in-progress: true
 jobs:
-  release:
+  create-version-pr-or-create-release:
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo
@@ -19,7 +19,8 @@ jobs:
           cache: 'npm'
       - name: install dependencies
         run: npm ci
-      - name: create release
+      - name: create release or PR Version
+        id: release
         uses: changesets/action@v1
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
