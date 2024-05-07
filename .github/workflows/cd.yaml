@@ -1,4 +1,4 @@
-name: CD-and-release
+name: deploy-and-release
 on:
   push:
     branches:
@@ -15,6 +15,7 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
+        # add fetch-depth and persist-credentials to stop throwing errror when changeset/action try to create a tag in the publish step below.
         with:
           fetch-depth: 0
           persist-credentials: false
@@ -25,6 +26,7 @@ jobs:
           cache: 'npm'
       - name: install dependencies
         run: npm ci
+        # action will create a PR and changelog files if the PR has changesets files.
       - name: create release or PR Version
         id: release
         uses: changesets/action@v1
