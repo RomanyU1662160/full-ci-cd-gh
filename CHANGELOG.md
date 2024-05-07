@@ -1,5 +1,11 @@
 # next-app
 
+## 0.3.0
+
+### Minor Changes
+
+- 26a8672: Test tag
+
 ## 0.2.0
 
 ### Minor Changes
