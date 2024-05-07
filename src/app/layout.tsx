@@ -36,8 +36,8 @@ export default async function RootLayout({
           crossOrigin='anonymous'
         ></link>
       </head>
-      <FeaturesFlagProvider serverState={serverState}>
-        <body className={inter.className}>
+      <body className={inter.className}>
+        <FeaturesFlagProvider serverState={serverState}>
           <Navbar />
           <div className='container'>{children}</div>
           <script
@@ -46,8 +46,8 @@ export default async function RootLayout({
             crossOrigin='anonymous'
             async
           ></script>
-        </body>
-      </FeaturesFlagProvider>
+        </FeaturesFlagProvider>
+      </body>
     </html>
   );
 }
