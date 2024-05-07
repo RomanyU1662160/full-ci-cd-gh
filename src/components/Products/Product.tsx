@@ -17,8 +17,8 @@ function ProductItem({ product }: ProductProps) {
       <Image
         src={product?.image}
         alt={product?.title}
-        width={200}
-        height={200}
+        width={250}
+        height={250}
       />
       <div className='card-body'>
         <h3 className='card-title text-info'>{product?.title}</h3>
