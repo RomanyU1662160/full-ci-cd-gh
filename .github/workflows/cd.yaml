@@ -10,18 +10,12 @@ permissions:
   contents: write
 
 jobs:
+  unit-tests-and-build:
+    uses: ./.github/workflows/build.yaml
+    secrets: inherit
   create-version-pr-or-create-release:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout repo
-        uses: actions/checkout@v4
-      - name: setup node version 20X
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-      - name: install dependencies
-        run: npm ci
       - name: create release or PR Version
         id: release
         uses: changesets/action@v1
